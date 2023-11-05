@@ -9,6 +9,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MainComponent } from './components/main/main.component';
     FormsModule,
     provideFirebaseApp(() => initializeApp({"projectId":"jghbkjhg","appId":"1:953022890026:web:d3a000ede9dc37af0a8353","storageBucket":"jghbkjhg.appspot.com","apiKey":"AIzaSyANRZFmvW2oXM2_NwpG1_CzOyS_-cPC384","authDomain":"jghbkjhg.firebaseapp.com","messagingSenderId":"953022890026"})),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]
