@@ -1,7 +1,7 @@
 import { User } from './../user';
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup,GoogleAuthProvider, UserCredential } from '@angular/fire/auth';
-import { Firestore, collection, addDoc, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, doc, setDoc, getDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,26 @@ export class UserService {
   saveUser( user : User){
     const userRef = collection(this.firestore,'users');
     return addDoc(userRef, user);
+  }
+
+  async incrementUserExperience(userId: string): Promise<void> {
+    const userRef = doc(this.firestore, 'users', userId);
+
+    try {
+      const docSnapshot = await getDoc(userRef);
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data() as User;
+        const currentExperience = userData.xp || 0;
+        const newExperience = currentExperience + 1;
+
+        await setDoc(userRef, { xp: newExperience }, { merge: true });
+      } else {
+        // El documento del usuario no existe, puedes manejar este caso si es necesario
+        console.error('El documento del usuario no existe.');
+      }
+    } catch (error) {
+      console.error('Error al incrementar la experiencia del usuario:', error);
+    }
   }
 
 }
