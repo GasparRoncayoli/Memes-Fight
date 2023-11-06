@@ -1,6 +1,6 @@
 import { User } from './../user';
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup,GoogleAuthProvider, UserCredential } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, signInWithPopup,GoogleAuthProvider, UserCredential, user } from '@angular/fire/auth';
 import { Firestore, collection, addDoc, doc, setDoc, getDoc } from '@angular/fire/firestore';
 
 @Injectable({
@@ -67,6 +67,11 @@ export class UserService {
     } catch (error) {
       console.error('Error al incrementar la experiencia del usuario:', error);
     }
+  }
+
+
+  getUser(){
+    return user;
   }
 
 }
