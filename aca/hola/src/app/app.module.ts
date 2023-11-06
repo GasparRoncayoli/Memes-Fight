@@ -5,19 +5,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Asegúrate
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getAuth, provideAuth,  } from '@angular/fire/auth';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-
+import { MenuPrincipalComponent } from './components/menu-principal/menu-principal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    MenuPrincipalComponent
   ],
   imports: [
     BrowserModule,

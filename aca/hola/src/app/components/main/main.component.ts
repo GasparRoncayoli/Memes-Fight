@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Auth, } from '@angular/fire/auth';
+import { User } from 'src/app/user';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -9,8 +12,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./main.component.css'],
 })
 
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   memeForm: FormGroup; // Declarar el formulario sin inicializarlo
+  user: any; // Define user como any
+  private userSubscription: Subscription | undefined;
 
   private url =
     'https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image';
@@ -27,6 +32,10 @@ export class MainComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private formBuilder: FormBuilder,
+    private auth: Auth, // Inyecta el servicio Auth
+
+
+
   ) {
     this.memeForm = this.formBuilder.group({
       text0: [''],
@@ -60,6 +69,13 @@ export class MainComponent implements OnInit {
           this.memeUrl = data.data.url;
           console.log('URL del meme creado:', this.memeUrl);
           this.memeImageVisible = true;
+
+          // Incrementa la experiencia del usuario si está autenticado
+          if (this.user) {
+            this.userService.incrementUserExperience(this.user.uid);
+          } else {
+            console.log("El usuario no está autenticado");
+          }
         } else {
           console.error('Error al crear el meme:', data.error_message);
         }
@@ -98,6 +114,13 @@ export class MainComponent implements OnInit {
       .catch(error => console.log(error));
   }
 
-  ngOnInit(): void {}
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
+  }
+
+  ngOnInit(): void {
+  }
 
 }

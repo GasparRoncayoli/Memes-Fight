@@ -1,71 +1,57 @@
-/* Estilos para el contenedor del formulario y botón */
+/* Estilo para el fondo de la página */
+body {
+  background-color: #ff00ea;
+  /* Color de fondo naranja oscuro para todo el documento */
+  margin: 0;
+  /* Elimina el margen predeterminado del cuerpo */
+  padding: 0;
+  /* Elimina el relleno predeterminado del cuerpo */
+}
+
+/* Estilo para el contenedor principal */
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #f5f5f5; /* Agrega un fondo de color gris claro */
-}
-
-.login-form {
-  max-width: 400px;
+  background-color: #FFA500;
+  /* Naranja oscuro */
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  background: #fff;
-  text-align: center;
+  border-radius: 0;
+  /* Elimina el borde redondeado */
 }
 
-/* Estilos para los campos del formulario */
-.form-group {
-  margin: 10px 0;
+/* Estilo para el título "Meme Generator" centrado */
+h1 {
+  text-align: center;
+  color: #FFF;
+  /* Texto blanco */
 }
 
 .form-group label {
-  display: block;
-  font-weight: 600;
+  color: #FFA500;
+  /* Color de etiquetas en naranja */
 }
 
-.form-control {
+.form-group input[type="text"],
+.form-group input[type="password"] {
   width: 100%;
+  /* Ancho completo */
   padding: 10px;
-  border: 1px solid #ccc;
+  margin: 5px 0;
+  border: 1px solid #FFA500;
+  /* Borde naranja */
   border-radius: 5px;
-  font-size: 16px;
-  outline: none;
 }
 
-/* Estilos para el botón Iniciar sesión */
-.btn-primary {
-  width: 100%;
-  padding: 10px;
-  background: #007BFF;
+button {
+  background-color: #FFA500;
+  /* Fondo naranja para botones */
+  color: #FFF;
+  /* Texto blanco en botones */
   border: none;
   border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-.btn-primary:hover {
-  background: #0056b3;
-}
-
-/* Estilos para el botón Login With Google */
-.btn-danger {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  background-color: #DC3545;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn-danger:hover {
-  background-color: #A82532;
+button:hover {
+  background-color: #FFD700;
+  /* Cambio de color en el hover (amarillo dorado) */
 }

@@ -1,0 +1,54 @@
+/* Estilos generales del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #FFA500;
+  /* Naranja */
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #FFA500;
+  /* Naranja */
+  border-radius: 5px;
+}
+
+/* Estilo para el botón de enviar */
+.btn-primary {
+  background-color: #FFA500;
+  /* Naranja */
+  border: none;
+  color: #fff;
+  /* Texto en blanco */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #FF8C00;
+  /* Naranja más oscuro al pasar el ratón */
+}
+
+/* Estilo para el botón de volver */
+.btn-danger {
+  background-color: #FF4500;
+  /* Naranja rojizo */
+  border: none;
+  color: #fff;
+  /* Texto en blanco */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #FF6347;
+  /* Naranja rojizo más oscuro al pasar el ratón */
+}

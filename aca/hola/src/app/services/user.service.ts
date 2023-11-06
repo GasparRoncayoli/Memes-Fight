@@ -41,15 +41,24 @@ export class UserService {
   }
 
   async incrementUserExperience(userId: string): Promise<void> {
-    const userRef = doc(this.firestore, 'users', userId);
-
     try {
+      // Obtén una referencia al documento del usuario
+      const userRef = doc(this.firestore, 'users', userId);
+
+      // Obten el documento actual del usuario
       const docSnapshot = await getDoc(userRef);
+
       if (docSnapshot.exists()) {
+        // El documento del usuario existe, obten su data
         const userData = docSnapshot.data() as User;
-        const currentExperience = userData.xp || 0;
+
+        // Obtén la experiencia actual del usuario (si existe)
+        const currentExperience = userData?.xp || 0;
+
+        // Calcula la nueva experiencia
         const newExperience = currentExperience + 1;
 
+        // Actualiza el documento del usuario con la nueva experiencia
         await setDoc(userRef, { xp: newExperience }, { merge: true });
       } else {
         // El documento del usuario no existe, puedes manejar este caso si es necesario

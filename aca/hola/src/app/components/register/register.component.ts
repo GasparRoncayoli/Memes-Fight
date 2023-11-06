@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router : Router) {}
 
   ngOnInit(): void {
     // Inicialización adicional si es necesaria.
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
       this.userService.register(this.formReg.value)
         .then((response) => {
           console.log(response);
-          // Puedes redirigir al usuario a una página de inicio de sesión o mostrar un mensaje de éxito aquí.
+          this.router.navigate(['/login']);
         })
         .catch((error) => {
           console.error(error);
